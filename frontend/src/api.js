@@ -2,7 +2,7 @@
  * CredAccess - Frontend API Client
  */
 
-const API_BASE = '/api';
+const API_BASE = 'https://credaccess-api.onrender.com/api';
 
 export function getAuthToken() {
   return localStorage.getItem('credaccess_token');
