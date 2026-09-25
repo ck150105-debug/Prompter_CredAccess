@@ -1,5 +1,13 @@
 # CredAccess — Unlocking Credit for the Unbanked
 
+🌐 Live Demo
+
+👉 Open https://ck150105-debug.github.io/Prompter_CredAccess/
+
+Frontend: GitHub Pages
+Backend: Render
+Status: 🟢 Live
+
 > **Fintech Financial Eligibility & Pre-Screening Platform for Gig Workers and Informal Economy Professionals**
 
 CredAccess is an end-to-end prototype designed to unlock formal credit access for gig economy workers (rideshare drivers, delivery riders, freelance technicians) and small micro-vendors who lack traditional payslips, employer letters, or CIBIL/bureau credit scores.
