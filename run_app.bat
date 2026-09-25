@@ -25,20 +25,44 @@ if %errorlevel% neq 0 (
     )
 )
 
+:: Install backend Python dependencies
+echo [1/3] Installing backend Python dependencies...
+cd backend
+
+python -m pip install --upgrade pip
+
+python -m pip install "fastapi>=0.110.0" ^
+    "uvicorn[standard]>=0.28.0" ^
+    "pydantic>=2.6.0" ^
+    "pandas>=2.2.0" ^
+    "numpy>=1.26.0" ^
+    "python-multipart>=0.0.9"
+
+if %errorlevel% neq 0 (
+    echo.
+    echo [ERROR] Failed to install Python dependencies.
+    pause
+    exit /b 1
+)
+
+cd ..
+echo Python dependencies installed successfully.
+echo.
+
 :: Build frontend if dist doesn't exist
 if not exist "frontend\dist" (
-    echo [1/2] Building Frontend SPA for production...
+    echo [2/3] Building Frontend SPA for production...
     cd frontend
     call npm install
     call npm run build
     cd ..
     echo Frontend build complete.
 ) else (
-    echo [1/2] Frontend build detected in frontend\dist.
+    echo [2/3] Frontend build detected in frontend\dist.
 )
 
 :: Launch FastAPI backend
-echo [2/2] Launching CredAccess Unified Server on http://127.0.0.1:8000 ...
+echo [3/3] Launching CredAccess Unified Server on http://127.0.0.1:8000 ...
 echo.
 echo Application will be live at:
 echo   - Web App UI:        http://127.0.0.1:8000
@@ -49,4 +73,5 @@ echo.
 
 cd backend
 python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+
 pause
